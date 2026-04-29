@@ -1,0 +1,13 @@
+{
+  "title": "Select your city",
+  "loading": "Loading cities...",
+  "explore_options": "Explore Services",
+  "options": {
+    "contacts": "Contacts",
+    "matches": "Matches",
+    "transport": "Transport",
+    "restaurantBar": "Restaurant/Bar",
+    "tour": "Tour",
+    "emergency": "Emergency"
+  }
+}
