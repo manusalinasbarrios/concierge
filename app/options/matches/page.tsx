@@ -12,7 +12,7 @@ interface Match {
   description: string;
 }
 
-const STRAPI_URL = process.env.STRAPI_URL || 'http://localhost:1337';
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
 
 async function getMatches(cityId: string, lang: string) {
   // Using the API structure provided in your request
@@ -21,7 +21,7 @@ async function getMatches(cityId: string, lang: string) {
     cache: 'no-store',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
     },
   });
 

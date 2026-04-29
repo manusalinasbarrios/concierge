@@ -33,12 +33,12 @@ export interface WeatherData {
   };
 }
 
-const STRAPI_URL = process.env.STRAPI_URL || 'http://localhost:1337';
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
 
 export async function getCityName(cityId: string) {
   const res = await fetch(`${STRAPI_URL}/api/cities`, {
     headers: {
-      Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
     },
   });
   if (!res.ok) return null;
@@ -50,7 +50,7 @@ export async function getCityName(cityId: string) {
 }
 
 export async function getWeatherData(cityName: string, lang: string) {
-  const API_KEY = process.env.WEATHER_API_KEY; // Add this to your .env
+  const API_KEY = process.env.NEXT_PUBLIC_WEATHER_API_KEY; // Add this to your .env
   const url = `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${cityName}&days=3&lang=${lang}`;
   console.log('Fetching weather data from:', url);
   const res = await fetch(url, { next: { revalidate: 900 } }); // Revalidate every 15 minutes

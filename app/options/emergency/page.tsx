@@ -10,7 +10,7 @@ interface Emergency {
   phone: string;
 }
 
-const STRAPI_URL = process.env.STRAPI_URL || 'http://localhost:1337';
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
 
 async function getEmergencies(cityId: string) {
   const url = `${STRAPI_URL}/api/emergencias?filters[city][id][$eq]=${cityId}`;
@@ -19,7 +19,7 @@ async function getEmergencies(cityId: string) {
     cache: 'no-store',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
     },
   });
 

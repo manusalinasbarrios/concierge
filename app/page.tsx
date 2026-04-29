@@ -9,7 +9,7 @@ interface CityItem {
   name: string;
   description: string;
 }
-const STRAPI_URL = process.env.STRAPI_URL || 'http://localhost:1337';
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
 
 async function getStrapiContent(lang: string) {
   // We use localhost:1337 which is the default for Strapi.
@@ -18,7 +18,7 @@ async function getStrapiContent(lang: string) {
     cache: 'no-store', // Ensures you always get the latest data from Strapi
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
     },
   });
 

@@ -12,7 +12,7 @@ export async function getQuickContacts(cityId: string) {
   const res = await fetch(url, {
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
     },
     next: { revalidate: 60 } // Cache for 1 minute
   });

@@ -10,14 +10,14 @@ import FloatingContactButton from "./components/FloatingContactButton";
 import FloatingWeatherWidget from "./components/FloatingWeatherWidget";
 
 
-const STRAPI_URL = process.env.STRAPI_URL || 'http://localhost:1337';
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
 
 
 async function getCities(lang: string) {
   const res = await fetch(`${STRAPI_URL}/api/cities?locale=${lang}`, {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
     },
     next: { revalidate: 3600 }, // Cache for 1 hour
   });
