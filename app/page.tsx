@@ -9,11 +9,12 @@ interface CityItem {
   name: string;
   description: string;
 }
+const STRAPI_URL = process.env.STRAPI_URL || 'http://localhost:1337';
 
 async function getStrapiContent(lang: string) {
   // We use localhost:1337 which is the default for Strapi.
   // We pass the ?locale parameter to Strapi
-  const res = await fetch(`http://localhost:1337/api/cities?locale=${lang}`, {
+  const res = await fetch(`${STRAPI_URL}/api/cities?locale=${lang}`, {
     cache: 'no-store', // Ensures you always get the latest data from Strapi
     headers: {
       'Content-Type': 'application/json',

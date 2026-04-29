@@ -76,7 +76,8 @@ export default async function ToursPage({
               {tour.coverImage && (
                 <div className="relative w-full h-64">
                   <Image
-                    src={`${STRAPI_URL}${tour.coverImage.url}`}
+                    //src={`${STRAPI_URL}${tour.coverImage.url}`}
+                    src={`${tour.coverImage.url.startsWith('http') ? tour.coverImage.url : `${STRAPI_URL}${tour.coverImage.url}`}`}
                     alt={tour.coverImage.alternativeText || tour.name}
                     fill
                     className="object-cover"

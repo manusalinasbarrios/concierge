@@ -80,7 +80,7 @@ export default async function RestaurantsPage({
                 {restaurant.avatar ? (
                    <div className="relative w-full h-64">
                                     <Image 
-                                      src={`${STRAPI_URL}${restaurant.avatar.url}`}
+                                      src={`${restaurant.avatar.url.startsWith('http') ? restaurant.avatar.url : `${STRAPI_URL}${restaurant.avatar.url}`}`}
                                       alt={restaurant.avatar.alternativeText || restaurant.name}
                                       fill
                                       className="object-cover"
