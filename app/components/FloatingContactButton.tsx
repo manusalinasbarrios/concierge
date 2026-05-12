@@ -19,7 +19,7 @@ export default function FloatingContactButton({ lang }: { lang: string }) {
   const [contacts, setContacts] = useState<Contact[]>([]);
 
   // Show on /options and all sub-routes
-  const isVisible = pathname?.startsWith('/options');
+  const isVisible = pathname?.startsWith('/cities/options');
 
   useEffect(() => {
     if (isVisible && cityId) {
