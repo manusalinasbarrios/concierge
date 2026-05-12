@@ -44,7 +44,7 @@ export async function getCityName(cityId: string) {
   if (!res.ok) return null;
 
   const json = await res.json();
-  const city = json.data.find((city: any) => city.id === parseInt(cityId));
+  const city = json.data.find((city: any) => city.documentId === cityId);
   if (!city) return null;
   return city.cityNameForWeather;
 }
