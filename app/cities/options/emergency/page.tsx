@@ -14,7 +14,7 @@ interface Emergency {
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
 
 async function getEmergencies(cityId: string) {
-  const url = `${STRAPI_URL}/api/emergencias?filters[city][id][$eq]=${cityId}`;
+  const url = `${STRAPI_URL}/api/emergencias?filters[city][documentId][$eq]=${cityId}`;
   
   const res = await fetch(url, {
     cache: 'no-store',

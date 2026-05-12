@@ -17,7 +17,7 @@ const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
 
 async function getMatches(cityId: string, lang: string) {
   // Using the API structure provided in your request
-  const url = `${STRAPI_URL}/api/partidos?filters[city][id][$eq]=${cityId}`;
+  const url = `${STRAPI_URL}/api/partidos?filters[city][documentId][$eq]=${cityId}`;
   const res = await fetch(url, {
     cache: 'no-store',
     headers: {

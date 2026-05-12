@@ -6,6 +6,7 @@ import Link from 'next/link';
 // Adjust attributes to match your specific collection fields.
 interface CityItem {
   id: number;
+  documentId: string;
   name: string;
   description: string;
 }
@@ -56,7 +57,7 @@ export default async function StrapiPage({
 
 
         {items.map((item) => (
-          <Link key={item.id} href={`cities/options?lang=${lang}&city=${item.id}`}
+          <Link key={item.documentId} href={`cities/options?lang=${lang}&city=${item.documentId}`}
             className='text-center'
           >
             <article style={{ padding: '1rem', border: '1px solid #eee', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)', cursor: 'pointer' }} className="hover:bg-foreground/5 transition-colors">

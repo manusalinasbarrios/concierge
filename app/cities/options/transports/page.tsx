@@ -14,7 +14,7 @@ const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
 
 async function getTransport(cityId: string, lang: string) {
   // Using the API structure and filters provided in your request
-  const url = `${STRAPI_URL}/api/transportes?filters[cities][id][$eq]=${cityId}`;
+  const url = `${STRAPI_URL}/api/transportes?filters[cities][documentId][$eq]=${cityId}`;
   const res = await fetch(url, {
     cache: 'no-store',
     headers: {

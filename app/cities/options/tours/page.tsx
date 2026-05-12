@@ -19,7 +19,7 @@ const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
 
 async function getTours(cityId: string, lang: string) {
   // Using the API structure and populate parameters provided
-  const url = `${STRAPI_URL}/api/tours?filters[city][id][$eq]=${cityId}&populate=coverImage&locale=${lang}`;
+  const url = `${STRAPI_URL}/api/tours?filters[city][documentId][$eq]=${cityId}&populate=coverImage&locale=${lang}`;
   
   const res = await fetch(url, {
     cache: 'no-store',

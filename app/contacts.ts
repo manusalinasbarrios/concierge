@@ -8,7 +8,7 @@ interface Contact {
 }
 
 export async function getQuickContacts(cityId: string) {
-  const url = `http://localhost:1337/api/contactos?populate=cities&filters[cities][id][$eq]=${cityId}`;
+  const url = `http://localhost:1337/api/contactos?populate=cities&filters[cities][documentId][$eq]=${cityId}`;
   const res = await fetch(url, {
     headers: {
       'Content-Type': 'application/json',

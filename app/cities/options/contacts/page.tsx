@@ -5,6 +5,7 @@ import ReturnToCityLink from '../../../../app/components/ReturnToCityLink';
 
 interface Contact {
   id: number;
+  documentId: string;
   fullname: string;
   email: string;
   phone: string;
@@ -15,7 +16,7 @@ const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
 
 async function getContacts(cityId: string, lang: string) {
   // Using the API structure and filters provided in your request
-  const url = `${STRAPI_URL}/api/contactos?populate=cities&filters[cities][id][$eq]=${cityId}`;
+  const url = `${STRAPI_URL}/api/contactos?populate=cities&filters[cities][documentId][$eq]=${cityId}`;
   const res = await fetch(url, {
     cache: 'no-store',
     headers: {
