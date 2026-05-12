@@ -37,7 +37,7 @@ export default async function StrapiPage({
   const welcomeData = await getWelcomePage(lang);
 
   return (
-    <main className="max-w-screen-lg mx-auto my-8 p-4 font-sans">
+    <main className="flex flex-col items-center justify-center max-w-screen-lg mx-auto my-8 p-4 font-sans">
       {welcomeData && (
         <section className="text-center text-(#35633f) mb-16 py-8 border-b border-foreground/5">
           <h1 className="text-6xl md:text-5xl font-extrabold text-foreground mb-4 uppercase text-green-800" 
