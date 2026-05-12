@@ -4,7 +4,14 @@ export interface Restaurant {
   id: number;
   documentId: string;
   name: string;
+  nameLocation1: string | null;
+  nameLocation2: string | null;
+  nameLocation3: string | null;
+  nameLocation4: string | null;
   restaurantUrl: string | null;
+  location2: string | null;
+  location3: string | null;
+  location4: string | null;
   description: string;
   avatar: {
     url: string;

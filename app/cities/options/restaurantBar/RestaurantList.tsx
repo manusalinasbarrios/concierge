@@ -86,17 +86,47 @@ export default function RestaurantList({
             <div className="p-6">
               <h2 className="text-4xl font-bold mb-3">{restaurant.name}</h2>
               <p className="text-2xl mb-6 leading-relaxed ">{restaurant.description}</p>
-              {restaurant.restaurantUrl && (
-                <a
-                  href={restaurant.restaurantUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition-colors group"
-                >
-                  <div className="w-5 h-5 group-hover:scale-110 transition-transform flex-shrink-0 bg-current" style={{ maskImage: "url('/img/map-pin.svg')", maskRepeat: 'no-repeat', maskSize: 'contain', maskPosition: 'center' }} aria-hidden="true" />
-                  <span className="text-3xl" style={{ textTransform: 'uppercase' }}>{lang === 'en' ? 'Location' : 'Ubicación'}</span>
-                </a>
-              )}
+              
+              {(() => {
+                const locations = [
+                  { url: restaurant.restaurantUrl, label: restaurant.nameLocation1 },
+                  { url: restaurant.location2, label: restaurant.nameLocation2 },
+                  { url: restaurant.location3, label: restaurant.nameLocation3 },
+                  { url: restaurant.location4, label: restaurant.nameLocation4 },
+                ].filter((loc) => loc.url);
+
+                const defaultLabel = lang === 'en' ? 'Location' : 'Ubicación';
+
+                if (locations.length === 0) return null;
+
+                return (
+                  <div className={locations.length > 1 ? "grid grid-cols-1 md:grid-cols-2 gap-4" : "w-full"}>
+                    {locations.map((loc, idx) => (
+                      <a
+                        key={idx}
+                        href={loc.url!}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition-colors group"
+                      >
+                        <div
+                          className="w-5 h-5 group-hover:scale-110 transition-transform flex-shrink-0 bg-current"
+                          style={{
+                            maskImage: "url('/img/map-pin.svg')",
+                            maskRepeat: 'no-repeat',
+                            maskSize: 'contain',
+                            maskPosition: 'center',
+                          }}
+                          aria-hidden="true"
+                        />
+                        <span className="text-3xl" style={{ textTransform: 'uppercase' }}>
+                          {loc.label || defaultLabel}
+                        </span>
+                      </a>
+                    ))}
+                  </div>
+                );
+              })()}
             </div>
           </article>
         ))}
