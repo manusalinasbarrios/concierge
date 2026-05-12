@@ -3,7 +3,7 @@ import type { NextRequest } from 'next/server';
 
 const locales = ['en', 'es'];
 const defaultLocale = 'es';
-const defaultTheme = 'light';
+const defaultTheme = 'dark';
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;

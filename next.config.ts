@@ -2,14 +2,15 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   images: {
-    dangerouslyAllowLocalIP: true,
+    //dangerouslyAllowLocalIP: true,
     remotePatterns: [
-      new URL('https://delightful-crown-636634ff69.media.strapiapp.com/**'),
+      //new URL('https://delightful-crown-636634ff69.media.strapiapp.com/**'),
+     // new URL('http://localhost:1337/uploads/**'),
       {
         protocol: 'http',
         hostname: 'localhost',
         port: '1337',
-        pathname: '/uploads/**',
+        pathname: '/**',
       },
        {
         protocol: 'https',

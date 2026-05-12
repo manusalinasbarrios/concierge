@@ -4,30 +4,25 @@ import Link from 'next/link';
 
 // This interface matches the standard Strapi v4 response structure.
 // Adjust attributes to match your specific collection fields.
-interface CityItem {
-  id: number;
-  name: string;
-  description: string;
+interface WelcomePageData {
+  welcomeTitle: string;
+  welcomeContent: string;
 }
+
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
 
-async function getStrapiContent(lang: string) {
-  // We use localhost:1337 which is the default for Strapi.
-  // We pass the ?locale parameter to Strapi
-  const res = await fetch(`${STRAPI_URL}/api/cities?locale=${lang}`, {
-    cache: 'no-store', // Ensures you always get the latest data from Strapi
+async function getWelcomePage(lang: string) {
+  const res = await fetch(`${STRAPI_URL}/api/welcome-page?locale=${lang}`, {
+    cache: 'no-store',
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
     },
   });
 
-  if (!res.ok) {
-    throw new Error('Failed to fetch data from Strapi');
-  }
-
+  if (!res.ok) return null;
   const json = await res.json();
-  return json.data as CityItem[];
+  return json.data as WelcomePageData;
 }
 
 export default async function StrapiPage({ 
@@ -39,20 +34,41 @@ export default async function StrapiPage({
   const lang = sParams.lang || 'es';
 
   const dict = await getDictionary(lang);
-  const items = await getStrapiContent(lang);
+  const welcomeData = await getWelcomePage(lang);
 
   return (
     <main className="max-w-screen-lg mx-auto my-8 p-4 font-sans">
-      <h1 className='text-gray-500'>{dict.title}</h1>
-      <div className="flex flex-col gap-6">
-        {items.map((item) => (
-          <Link key={item.id} href={`/options?lang=${lang}&city=${item.id}`}>
-            <article style={{ padding: '1rem', border: '1px solid #eee', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)', cursor: 'pointer' }} className="hover:bg-foreground/5 transition-colors">
-              <h2 style={{ marginTop: 0 }}>{item.name}</h2>
-              <p className='text-gray-500' style={{  }}>{item.description}</p>
-            </article>
-          </Link>
-        ))}
+      {welcomeData && (
+        <section className="text-center mb-16 py-8 border-b border-foreground/5">
+          <h1 className="text-6xl md:text-5xl font-extrabold text-foreground mb-4"
+            style={{
+              textTransform: 'uppercase',
+              color: '#35633F !important',
+            }}
+          >
+            {welcomeData.welcomeTitle}
+          </h1>
+          <p className="text-2xl md:text-xl text-gray-500 max-w-2xl mx-auto"
+          style={{
+            textTransform:'uppercase'
+          }}
+          >
+
+            {welcomeData.welcomeContent}
+          </p>
+        </section>
+      )}
+
+      <div className="flex justify-center py-12">
+        <Link
+          href={`/cities?lang=${lang}`}
+          className="bg-foreground text-background px-10 py-4 rounded-full font-bold text-xl hover:scale-105 transition-all shadow-xl active:scale-95"
+          style={{
+            textTransform: 'uppercase',
+          }}
+       >
+          {lang === 'en' ? 'Explore Cities' : 'Ver Ciudades'}
+        </Link>
       </div>
     </main>
   );

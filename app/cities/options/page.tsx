@@ -1,5 +1,5 @@
 import React from 'react';
-import { getDictionary } from '../get-dictionary';
+import { getDictionary } from '../../get-dictionary';
 import Link from 'next/link';
 
 export default async function OptionsPage({
@@ -23,13 +23,23 @@ export default async function OptionsPage({
 
   return (
     <main className="max-w-screen-lg mx-auto my-8 p-4 font-sans">
-      <h1 className="text-3xl font-bold mb-6 text-foreground">{dict.explore_options}</h1>
-      <ul className="list-none p-0">
+      <div className="max-w-screen-md mx-auto mb-6">
+      <h1 className="text-5xl font-bold mb-6 text-foreground"
+        style={{
+          textAlign: 'center',
+          textTransform: 'uppercase',
+          color: '#35633F !important',
+        }}
+      >{dict.explore_options}</h1>
+        </div>
+      
+      
+      <ul className="list-none p-0 max-w-md mx-auto grid">
         {options.map((option) => (
           <li key={option.key} className="mb-4">
-            <Link
-              href={`/options/${option.key}?lang=${lang}${city ? `&city=${city}` : ''}`}
-              className="flex items-center gap-4 p-4 border border-gray-200 rounded-lg text-foreground transition-colors duration-200 ease-in-out text-lg group"
+            <Link 
+              href={`/cities/options/${option.key}?lang=${lang}${city ? `&city=${city}` : ''}`}
+              className="flex items-center gap-4 p-4 px-15 border border-gray-200 rounded-lg text-foreground transition-colors duration-200 ease-in-out text-lg group"
             >
               <div
                 className="w-8 h-8 group-hover:scale-110 transition-transform flex-shrink-0 bg-current"
@@ -42,7 +52,9 @@ export default async function OptionsPage({
                 }}
                 aria-hidden="true"
               />
-              <span>{option.label}</span>
+              <span className='text-2xl' style={{
+                textTransform: 'uppercase',
+              }} >{option.label}</span>
             </Link>
           </li>
         ))}

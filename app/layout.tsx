@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { mainFont } from "./fonts";
 import "./globals.css";
 import React from "react";
+import Image from "next/image";
 import { headers } from "next/headers";
 import LanguageSwitcher from "./components/LanguageSwitcher";
 import CitySelector from "./components/CitySelector";
@@ -26,16 +27,6 @@ async function getCities(lang: string) {
   return json.data as { id: number; name: string }[];
 }
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
   title: "Concierge 24/7",
   description: "Your personal assistant for city information",
@@ -53,7 +44,7 @@ export default function RootLayout({
   const cities = React.use(getCities(lang));
 
   return (
-    <html lang={lang} className={`${theme} ${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
+    <html lang={lang} className={`${theme} ${mainFont.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <header className="flex justify-between items-center border-b border-foreground/10">
           <React.Suspense fallback={<div className="p-4">...</div>}>
@@ -65,6 +56,17 @@ export default function RootLayout({
           </div>
         </header>
         {children}
+        
+        <footer className="mt-auto py-12 border-foreground/10 flex flex-col items-center justify-center">
+          <Image 
+            src="/img/footer.svg" 
+            alt="Footer Logo" 
+           width={720} 
+           height={240} 
+           className="opacity-90"
+          />
+        </footer>
+
         <React.Suspense fallback={null}>
           <FloatingContactButton lang={lang} />
         </React.Suspense>

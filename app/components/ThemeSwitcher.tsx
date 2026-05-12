@@ -8,7 +8,7 @@ export default function ThemeSwitcher() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const currentTheme = searchParams.get('theme') || 'light';
+  const currentTheme = searchParams.get('theme') || 'dark';
 
   const toggleTheme = () => {
     const nextTheme = currentTheme === 'light' ? 'dark' : 'light';

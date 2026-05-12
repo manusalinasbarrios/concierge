@@ -1,6 +1,7 @@
 import React from 'react';
-import { getDictionary } from '../../get-dictionary';
-import Link from 'next/link';
+import { getDictionary } from '../../../get-dictionary';
+import ExploreServicesLink from '../../../../app/components/ExploreServicesLink';
+import ReturnToCityLink from '../../../../app/components/ReturnToCityLink';
 
 interface Transport {
   id: number;
@@ -52,9 +53,7 @@ export default async function TransportPage({
     return (
       <main className="max-w-screen-md mx-auto my-8 p-4 font-sans text-center">
         <p className="text-red-500">Error: No city selected.</p>
-        <Link href={`/?lang=${lang}`} className="text-blue-500 hover:underline mt-4 inline-block">
-          Return to city selection
-        </Link>
+        <ReturnToCityLink lang={lang} />
       </main>
     );
   }
@@ -62,11 +61,9 @@ export default async function TransportPage({
   const transportOptions = await getTransport(cityId, lang);
 
   return (
-    <main className="max-w-screen-lg mx-auto my-8 p-4 font-sans">
+    <main className="max-w-screen-lg mx-auto my-8 p-4">
       <div className="mb-6">
-        <Link href={`/options?lang=${lang}&city=${cityId}`} className="text-sm text-blue-500 hover:underline">
-          &larr; {dict.explore_options}
-        </Link>
+        <ExploreServicesLink lang={lang} cityId={cityId} dict={dict} />
       </div>
 
       <h1 className="text-3xl font-bold mb-6 text-foreground">{dict.options.transport}</h1>

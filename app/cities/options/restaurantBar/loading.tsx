@@ -8,7 +8,7 @@ export default function Loading() {
 
       <div className="grid gap-8">
         {[...Array(3)].map((_, i) => (
-          <div key={i} className="border border-gray-700 rounded-xl bg-gray-800/30 flex flex-col p-6 space-y-4">
+          <div key={i} className="border border-gray-700 rounded-xl bg-gray-800/30 flex flex-col h-[500px]">
             <div className="h-8 w-1/2 bg-gray-700 rounded" />
             <div className="space-y-2">
               <div className="h-4 w-full bg-gray-700 rounded" />

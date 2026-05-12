@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getCityName, getWeatherData } from '../../options/weather/page';
+import { getCityName, getWeatherData } from '../../cities/options/weather/page';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);

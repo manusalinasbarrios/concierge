@@ -1,6 +1,6 @@
 import React from 'react';
-import { getDictionary } from '../../get-dictionary';
-import Link from 'next/link';
+import { getDictionary } from '../../../get-dictionary';
+import ExploreServicesLink from '../../../../app/components/ExploreServicesLink';
 
 export interface WeatherData {
   current: {
@@ -74,11 +74,9 @@ export default async function WeatherPage({
   const weather = cityName ? await getWeatherData(cityName,lang) : null;
 
   return (
-    <main className="max-w-screen-lg mx-auto my-8 p-4 font-sans">
+    <main className="max-w-screen-lg mx-auto my-8 p-4">
       <div className="mb-6">
-        <Link href={`/options?lang=${lang}&city=${cityId}`} className="text-sm text-blue-500 hover:underline">
-          &larr; {dict.explore_options}
-        </Link>
+        <ExploreServicesLink lang={lang} cityId={cityId} dict={dict} />
       </div>
 
       <h1 className="text-3xl font-bold mb-6 text-foreground">

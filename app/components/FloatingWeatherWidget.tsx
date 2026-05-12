@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
-import type { WeatherData } from '../options/weather/page';
+import type { WeatherData } from '../cities/options/weather/page';
 
 export default function FloatingWeatherWidget({ lang }: { lang: string }) {
   const searchParams = useSearchParams();

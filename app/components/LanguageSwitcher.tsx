@@ -25,6 +25,9 @@ export default function LanguageSwitcher() {
             ? 'bg-foreground text-background'
             : 'bg-transparent border border-foreground/20 hover:bg-foreground/5'
         }`}
+        style={{
+          textTransform: 'uppercase'
+        }}
       >
         English
       </button>
@@ -35,6 +38,9 @@ export default function LanguageSwitcher() {
             ? 'bg-foreground text-background'
             : 'bg-transparent border border-foreground/20 hover:bg-foreground/5'
         }`}
+        style={{
+          textTransform: 'uppercase'
+        }}
       >
         Español
       </button>
