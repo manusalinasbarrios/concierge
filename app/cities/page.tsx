@@ -49,14 +49,9 @@ export default async function StrapiPage({
 
       <div className="flex flex-col gap-6">
         <h1
-          className="text-6xl font-bold mb-2 text-foreground"
-          style={{
-            textAlign: 'center',
-            textTransform: 'uppercase',
-            //letterSpacing: '0.1em',
-            color: '#35633F !important',
-          }}
-        >{lang === 'en' ? 'CITY GUIDE' : 'GUÍA DE LA CIUDAD'}</h1>
+          className="text-6xl font-bold mb-2 text-foreground text-green-800 uppercase text-center"
+        >
+        {lang === 'en' ? 'CITY GUIDE' : 'GUÍA DE LA CIUDAD'}</h1>
         <h1 className='text-5xl font-semibold text-foreground'>{lang === 'en' ? 'DINING, DRINKS & AFTER DARK' : 'CENA, BEBIDAS Y OCIO NOCTURNO'}</h1>
 
 
