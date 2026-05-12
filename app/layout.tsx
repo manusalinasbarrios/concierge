@@ -9,6 +9,7 @@ import CitySelector from "./components/CitySelector";
 import ThemeSwitcher from "./components/ThemeSwitcher";
 import FloatingContactButton from "./components/FloatingContactButton";
 import FloatingWeatherWidget from "./components/FloatingWeatherWidget";
+import FloatingOpenTableButton from "./components/FloatingOpenTableButton";
 
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
@@ -39,21 +40,19 @@ export default function RootLayout({
 }>) {
   // Layouts can't access searchParams, so we read the header from middleware
   const headerList = React.use(headers());
-  const lang = headerList.get('x-lang') || 'es';
-  const theme = headerList.get('x-theme') || 'light';
-  const cities = React.use(getCities(lang));
+  const lang = headerList.get('x-lang') || 'en';
+  const theme = headerList.get('x-theme') || 'dark';
+ // const cities = React.use(getCities(lang));
 
   return (
     <html lang={lang} className={`${theme} ${mainFont.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <header className="flex justify-between items-center border-b border-foreground/10">
           <React.Suspense fallback={<div className="p-4">...</div>}>
-            <CitySelector cities={cities} lang={lang} />
+            <CitySelector cities={[]} lang={lang} />
           </React.Suspense>
 
-          <div className="flex items-center gap-2 pr-4">
-            <LanguageSwitcher />
-          </div>
+          
         </header>
         {children}
         
@@ -69,6 +68,9 @@ export default function RootLayout({
 
         <React.Suspense fallback={null}>
           <FloatingContactButton lang={lang} />
+        </React.Suspense>
+        <React.Suspense fallback={null}>
+          <FloatingOpenTableButton lang={lang} />
         </React.Suspense>
         <React.Suspense fallback={null}>
           <FloatingWeatherWidget lang={lang} />

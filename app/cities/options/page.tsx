@@ -24,9 +24,7 @@ export default async function OptionsPage({
   return (
     <main className="max-w-screen-lg mx-auto my-8 p-4 font-sans">
       <div className="max-w-screen-md mx-auto mb-6">
-      <h1 className="text-5xl font-bold mb-6 text-foreground text-center text-green-800 uppercase"
-        
-      >{dict.explore_options}</h1>
+      
         </div>
       
       

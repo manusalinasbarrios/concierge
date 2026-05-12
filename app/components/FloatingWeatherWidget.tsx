@@ -19,6 +19,7 @@ export default function FloatingWeatherWidget({ lang }: { lang: string }) {
         .then((data) => {
           if (!data.error) {
             setWeather(data);
+            console.log('Weather data fetched successfully:', data);
           }
           setLoading(false);
         })
@@ -36,7 +37,7 @@ export default function FloatingWeatherWidget({ lang }: { lang: string }) {
       {/* Floating Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 left-6 z-50 flex items-center gap-3 bg-white  p-2 pr-4 rounded-full shadow-xl border border-gray-200  hover:scale-105 transition-all active:scale-95 group"
+        className="fixed bottom-6 left-6 z-50 flex items-center gap-3  p-2 pr-4 rounded-full shadow-xl border border-gray-200  hover:scale-105 transition-all active:scale-95 group"
         aria-label="View weather forecast"
       >
         <div className="bg-gray-200 rounded-full p-1">
@@ -64,7 +65,7 @@ export default function FloatingWeatherWidget({ lang }: { lang: string }) {
 
       {/* Forecast Drawer */}
       <div
-        className={`fixed inset-x-0 bottom-0 z-[60] bg-white border-t border-gray-200 rounded-t-3xl shadow-2xl transition-transform duration-500 ease-out transform ${
+        className={`fixed inset-x-0 bottom-0 z-[60]  border-t border-gray-200 rounded-t-3xl shadow-2xl transition-transform duration-500 ease-out transform ${
           isOpen ? 'translate-y-0' : 'translate-y-full'
         }`}
       >
@@ -85,9 +86,9 @@ export default function FloatingWeatherWidget({ lang }: { lang: string }) {
             {weather.forecast.forecastday.map((dayData) => (
               <div
                 key={dayData.date}
-                className="bg-gray-50 border border-gray-100 rounded-2xl p-4 text-center"
+                className="bg-gray-100/50 border border-gray-100 rounded-2xl p-4 text-center"
               >
-                <p className="text-xs font-semibold text-gray-500  mb-2">
+                <p className="text-xs font-semibold text-white-500  mb-2">
                 
                  
                   {new Date(dayData.date).toLocaleString(lang, {
@@ -101,13 +102,13 @@ export default function FloatingWeatherWidget({ lang }: { lang: string }) {
                   alt={dayData.day.condition.text}
                   className="w-12 h-12 mx-auto mb-1"
                 />
-                <p className="text-[10px] text-gray-400  capitalize line-clamp-1 mb-2">
+                <p className="text-[10px] text-white-400  capitalize line-clamp-1 mb-2">
                   {dayData.day.condition.text}
                 </p>
                 <p className="text-sm font-bold text-foreground">
                   {Math.round(dayData.day.maxtemp_c)}°
-                  <span className="text-gray-400 font-normal mx-1">/</span>
-                  <span className="text-gray-400 font-normal">
+                  <span className="text-white-400 font-normal mx-1">/</span>
+                  <span className="text-white-400 font-normal">
                     {Math.round(dayData.day.mintemp_c)}°
                   </span>
                 </p>

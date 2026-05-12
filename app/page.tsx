@@ -58,13 +58,22 @@ export default async function StrapiPage({
 
       <div className="flex justify-center py-12">
         <Link
-          href={`/cities?lang=${lang}`}
-          className="bg-foreground text-background px-10 py-4 rounded-full font-bold text-xl hover:scale-105 transition-all shadow-xl active:scale-95"
+          href={`/cities?lang=en`}
+          className="bg-foreground text-background m-4 px-10 py-4 rounded-full font-bold text-xl hover:scale-105 transition-all shadow-xl active:scale-95"
           style={{
             textTransform: 'uppercase',
           }}
        >
-          {lang === 'en' ? 'Explore Cities' : 'Ver Ciudades'}
+          English
+        </Link>
+         <Link
+          href={`/cities?lang=es`}
+          className="bg-foreground text-background m-4 px-10 py-4 rounded-full font-bold text-xl hover:scale-105 transition-all shadow-xl active:scale-95"
+          style={{
+            textTransform: 'uppercase',
+          }}
+       >
+          Español
         </Link>
       </div>
     </main>
