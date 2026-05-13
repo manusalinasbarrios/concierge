@@ -21,6 +21,7 @@ async function getTransport(cityId: string, lang: string) {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
     },
+    next: { revalidate: 3600 }, // Cache for 1 hour
   });
 
   if (!res.ok) {
@@ -42,11 +43,12 @@ const CATEGORY_ICONS: Record<string, string> = {
 export default async function TransportPage({
   searchParams,
 }: {
-  searchParams: Promise<{ lang?: string; city?: string }>;
+  searchParams: Promise<{ lang?: string; city?: string; cityName?: string }>;
 }) {
   const sParams = await searchParams;
   const lang = sParams.lang || 'es';
   const cityId = sParams.city;
+  const cityName = sParams.cityName || '';
   const dict = await getDictionary(lang);
 
   if (!cityId) {
@@ -63,7 +65,7 @@ export default async function TransportPage({
   return (
     <main className="max-w-screen-lg mx-auto my-8 p-4">
       <div className="mb-6">
-        <ExploreServicesLink lang={lang} cityId={cityId} dict={dict} />
+        <ExploreServicesLink lang={lang} cityId={cityId} dict={dict} cityName={cityName} />
       </div>
 
       <h1 className="text-3xl font-bold mb-6 text-foreground">{dict.options.transport}</h1>

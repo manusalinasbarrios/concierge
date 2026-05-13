@@ -5,11 +5,12 @@ import Link from 'next/link';
 export default async function OptionsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ lang?: string, city?: string }>;
+  searchParams: Promise<{ lang?: string, city?: string , cityName?: string }>;
 }) {
   const sParams = await searchParams;
   const lang = sParams.lang || 'es';
   const city = sParams.city;
+  const cityName = sParams.cityName || ''; // Fallback if cityName is not provided
   const dict = await getDictionary(lang);
 
   const options = [
@@ -24,15 +25,19 @@ export default async function OptionsPage({
   return (
     <main className="max-w-screen-lg mx-auto my-8 p-4 font-sans">
       <div className="max-w-screen-md mx-auto mb-6">
-      
-        </div>
-      
+        <h1 className="text-3xl font-bold text-foreground uppercase"
+          
+        >
+          {cityName}
+        </h1>
+      </div>
+
       
       <ul className="list-none p-0 max-w-md mx-auto grid">
         {options.map((option) => (
           <li key={option.key} className="mb-4">
             <Link 
-              href={`/cities/options/${option.key}?lang=${lang}${city ? `&city=${city}` : ''}`}
+              href={`/cities/options/${option.key}?lang=${lang}${city ? `&city=${city}` : ''}${cityName ? `&cityName=${cityName}` : ''}`}
               className="flex items-center gap-4 p-4 px-15 border border-gray-200 rounded-lg text-foreground transition-colors duration-200 ease-in-out text-lg group"
             >
               <div

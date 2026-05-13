@@ -47,7 +47,7 @@ export default function RootLayout({
   return (
     <html lang={lang} className={`${theme} ${mainFont.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
-        <header className="flex justify-between items-center border-b border-foreground/10">
+        <header className="flex justify-between items-center border-b border-foreground/10 mb-10">
           <React.Suspense fallback={<div className="p-4">...</div>}>
             <CitySelector cities={[]} lang={lang} />
           </React.Suspense>
@@ -64,6 +64,9 @@ export default function RootLayout({
            height={240} 
            className="opacity-90"
           />
+          <p className="text-sm text-gray-500 mt-4">
+            &copy; {new Date().getFullYear()} Powered by 24/7.
+          </p>
         </footer>
 
         <React.Suspense fallback={null}>

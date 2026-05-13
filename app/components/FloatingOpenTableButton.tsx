@@ -9,7 +9,7 @@ export default function FloatingOpenTableButton({ lang }: { lang: string }) {
   const cityId = searchParams.get('city');
 
   // Show on /cities/options and sub-routes only when a city is selected
-  const isVisible = pathname?.startsWith('/cities/options') && !!cityId;
+  const isVisible = pathname?.startsWith('/cities/options/restaurantBar') && !!cityId;
 
   if (!isVisible) return null;
 

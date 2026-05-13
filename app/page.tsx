@@ -13,11 +13,12 @@ const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
 
 async function getWelcomePage(lang: string) {
   const res = await fetch(`${STRAPI_URL}/api/welcome-page?locale=${lang}`, {
-    cache: 'no-store',
+    // cache: 'no-store',
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
     },
+    next: { revalidate: 3600 }, // Cache for 1 hour
   });
 
   if (!res.ok) return null;

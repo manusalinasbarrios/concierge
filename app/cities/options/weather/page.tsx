@@ -36,15 +36,16 @@ export interface WeatherData {
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
 
 export async function getCityName(cityId: string) {
-  const res = await fetch(`${STRAPI_URL}/api/cities`, {
+  const res = await fetch(`${STRAPI_URL}/api/cities/${cityId}?locale=en`, {
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
     },
+    next: { revalidate: 3600 }, // Cache for 1 hour
   });
   if (!res.ok) return null;
 
   const json = await res.json();
-  const city = json.data.find((city: any) => city.documentId === cityId);
+  const city = json.data;
   if (!city) return null;
   return city.cityNameForWeather;
 }
@@ -61,22 +62,23 @@ export async function getWeatherData(cityName: string, lang: string) {
 export default async function WeatherPage({
   searchParams,
 }: {
-  searchParams: Promise<{ lang?: string; city?: string }>;
+  searchParams: Promise<{ lang?: string; city?: string; cityName?: string }>;
 }) {
   const sParams = await searchParams;
   const lang = sParams.lang || 'es';
   const cityId = sParams.city;
+  const cityName = sParams.cityName || '';
   const dict = await getDictionary(lang);
 
   if (!cityId) return <div>No city selected</div>;
 
-  const cityName = await getCityName(cityId);
-  const weather = cityName ? await getWeatherData(cityName,lang) : null;
+  const cityNameForWeather = await getCityName(cityId);
+  const weather = cityNameForWeather ? await getWeatherData(cityNameForWeather,lang) : null;
 
   return (
     <main className="max-w-screen-lg mx-auto my-8 p-4">
       <div className="mb-6">
-        <ExploreServicesLink lang={lang} cityId={cityId} dict={dict} />
+        <ExploreServicesLink lang={lang} cityId={cityId} dict={dict} cityName={cityName} />
       </div>
 
       <h1 className="text-3xl font-bold mb-6 text-foreground">

@@ -21,6 +21,7 @@ async function getStrapiContent(lang: string) {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
     },
+    next: { revalidate: 3600 }, // Cache for 1 hour
   });
 
   if (!res.ok) {
@@ -53,7 +54,7 @@ export default async function StrapiPage({
 
 
         {items.map((item) => (
-          <Link key={item.documentId} href={`cities/options?lang=${lang}&city=${item.documentId}`}
+          <Link key={item.documentId} href={`cities/options?lang=${lang}&city=${item.documentId}&cityName=${item.name}`}
             className='text-center'
           >
             <article style={{ padding: '1rem', border: '1px solid #eee', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)', cursor: 'pointer' }} className="hover:bg-foreground/5 transition-colors">
