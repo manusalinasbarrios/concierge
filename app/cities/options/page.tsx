@@ -1,6 +1,25 @@
 import React from 'react';
 import { getDictionary } from '../../get-dictionary';
 import Link from 'next/link';
+import CityHeaderImage from '../../components/CityHeaderImage';
+
+
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'; 
+
+export async function getCityName(cityId: string, lang: string): Promise<any | null> {
+  const res = await fetch(`${STRAPI_URL}/api/cities/${cityId}?locale=${lang}&populate=citieHomePageImage`, {
+    cache: 'no-store', // Ensures you always get the latest data from Strapi
+    headers: {
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
+    },
+   // next: { revalidate: 3600 }, // Cache for 1 hour
+  });
+  if (!res.ok) return null;
+
+  const json = await res.json();
+  return json.data;
+  
+}
 
 export default async function OptionsPage({
   searchParams,
@@ -13,6 +32,10 @@ export default async function OptionsPage({
   const cityName = sParams.cityName || ''; // Fallback if cityName is not provided
   const dict = await getDictionary(lang);
 
+  // Fetch city data for the header image
+  const cityData = city ? await getCityName(city, lang) : null;
+  const headerImages = cityData?.citieHomePageImage || [];
+
   const options = [
     { key: 'contacts', label: dict.options.contacts, icon: '/img/contact.svg' },
     { key: 'matches', label: dict.options.matches, icon: '/img/matches.svg' },
@@ -24,14 +47,19 @@ export default async function OptionsPage({
 
   return (
     <main className="max-w-screen-lg mx-auto my-8 p-4 font-sans">
+      {headerImages.length > 0 && (
+        <CityHeaderImage images={headerImages} cityName={cityName} strapiUrl={STRAPI_URL} />
+      )}
+
       <div className="max-w-screen-md mx-auto mb-6">
         <h1 className="text-3xl font-bold text-foreground uppercase"
-          
         >
-          {cityName}
+          {cityData?.title  || 'City Options'}
         </h1>
+        <p className="text-lg text-foreground/70 mt-2">
+          {cityData?.description || 'Explore the various options available for this city.'}
+        </p>
       </div>
-
       
       <ul className="list-none p-0 max-w-md mx-auto grid">
         {options.map((option) => (

@@ -25,7 +25,7 @@ async function getCities(lang: string) {
   });
   if (!res.ok) return [];
   const json = await res.json();
-  return json.data as { id: number; name: string }[];
+  return json.data as { id: number; documentId: string; name: string }[];
 }
 
 export const metadata: Metadata = {
@@ -42,29 +42,23 @@ export default function RootLayout({
   const headerList = React.use(headers());
   const lang = headerList.get('x-lang') || 'en';
   const theme = headerList.get('x-theme') || 'dark';
- // const cities = React.use(getCities(lang));
+  const cities = React.use(getCities(lang));
 
   return (
     <html lang={lang} className={`${theme} ${mainFont.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <header className="flex justify-between items-center border-b border-foreground/10 mb-10">
           <React.Suspense fallback={<div className="p-4">...</div>}>
-            <CitySelector cities={[]} lang={lang} />
+            <CitySelector cities={cities} lang={lang} />
           </React.Suspense>
 
           
         </header>
         {children}
         
-        <footer className="mt-auto py-12 border-foreground/10 flex flex-col items-center justify-center">
-          <Image 
-            src="/img/footer.svg" 
-            alt="Footer Logo" 
-           width={720} 
-           height={240} 
-           className="opacity-90"
-          />
-          <p className="text-sm text-gray-500 mt-4">
+        <footer className="mt-auto pb-4 flex flex-col items-center justify-center">
+         
+          <p className="text-sm text-white-800 mt-4">
             &copy; {new Date().getFullYear()} Powered by 24/7.
           </p>
         </footer>
