@@ -19,7 +19,7 @@ async function getMatches(cityId: string, lang: string) {
   // Using the API structure provided in your request
   const url = `${STRAPI_URL}/api/partidos?filters[city][documentId][$eq]=${cityId}`;
   const res = await fetch(url, {
-    cache: 'no-store',
+    //cache: 'no-store',
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,

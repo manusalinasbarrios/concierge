@@ -30,7 +30,7 @@ export async function fetchRestaurants(
   const url = `${STRAPI_URL}/api/restaurantes?filters[city][documentId][$eq]=${cityId}&populate=avatar&pagination[page]=${page}&pagination[pageSize]=${pageSize}&locale=${lang}`;
 
   const res = await fetch(url, {
-    cache: 'no-store',
+   // cache: 'no-store',
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
