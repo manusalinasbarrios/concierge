@@ -42,8 +42,8 @@ export default function CityHeaderImage({
                 />
             ))}
 
-            <div className="absolute top-10 left-0 right-0 z-10 text-center px-4 pointer-events-none">
-                <h2 className="text-6xl md:text-6xl font-black text-white uppercase tracking-widest drop-shadow-2xl">
+            <div className="absolute top-3 left-0 right-0 z-10 text-center px-4 pointer-events-none">
+                <h2 className="text-5xl md:text-6xl font-black text-white uppercase  drop-shadow-2xl">
                     {cityName}
                 </h2>
             </div>

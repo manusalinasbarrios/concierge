@@ -41,7 +41,7 @@ export default async function OptionsPage({
     { key: 'matches', label: dict.options.matches, icon: '/img/matches.svg' },
     { key: 'transports', label: dict.options.transport, icon: '/img/transport.svg' },
     { key: 'restaurantBar', label: dict.options.restaurantBar, icon: '/img/restaurantBar.svg' },
-    { key: 'tours', label: dict.options.tour, icon: '/img/tour.svg' },
+    { key: 'tours_landing', label: dict.options.tour, icon: '/img/tour.svg' },
     { key: 'emergency', label: dict.options.emergency, icon: '/img/emergency.svg' },
   ];
 

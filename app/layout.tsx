@@ -16,7 +16,7 @@ const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
 
 
 async function getCities(lang: string) {
-  const res = await fetch(`${STRAPI_URL}/api/cities?locale=${lang}`, {
+  const res = await fetch(`${STRAPI_URL}/api/cities?locale=${lang}&sort=order:asc`, {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
