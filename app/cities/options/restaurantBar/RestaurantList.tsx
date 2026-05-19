@@ -107,7 +107,7 @@ export default function RestaurantList({
                         href={loc.url!}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition-colors group"
+                        className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold transition-colors group rounded-full"
                       >
                         <div
                           className="w-5 h-5 group-hover:scale-110 transition-transform flex-shrink-0 bg-current"
