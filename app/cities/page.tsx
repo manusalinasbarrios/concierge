@@ -9,6 +9,7 @@ export interface CityItem {
   documentId: string;
   name: string;
   description: string;
+  className: string;
   selectorImages: {
     url: string;
     alternativeText: string | null;
@@ -23,13 +24,13 @@ const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
 async function getStrapiContent(lang: string) {
   // We use localhost:1337 which is the default for Strapi.
   // We pass the ?locale parameter to Strapi
-  const res = await fetch(`${STRAPI_URL}/api/cities?locale=${lang}&populate=selectorImages`, {
-    //cache: 'no-store', // Ensures you always get the latest data from Strapi
+  const res = await fetch(`${STRAPI_URL}/api/cities?locale=${lang}&populate=selectorImages&sort=order:asc`, {
+    cache: 'no-store', // Ensures you always get the latest data from Strapi
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
     },
-    next: { revalidate: 3600 }, // Cache for 1 hour
+   // next: { revalidate: 3600 }, // Cache for 1 hour
   });
 
   if (!res.ok) {
@@ -69,7 +70,7 @@ export default async function StrapiPage({
                 className="block group"
               >
                 <div
-                  className="relative h-64 w-full rounded-2xl overflow-hidden shadow-xl transition-all duration-500 hover:scale-[1.01] flex items-center justify-center"
+                  className="relative h-64 min-w-[400px] w-full rounded-2xl overflow-hidden shadow-xl transition-all duration-500 hover:scale-[1.01] flex items-end justify-center pb-2 md:pb-2"
                   style={{
                     backgroundImage: fullImageUrl ? `url(${fullImageUrl})` : 'none',
                     backgroundSize: 'cover',
@@ -79,8 +80,8 @@ export default async function StrapiPage({
                   {/* Dark Overlay to make text pop */}
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors duration-300" />
 
-                  <article className="relative z-10 p-6 text-center">
-                    <h2 className="text-5xl md:text-6xl font-black text-white uppercase tracking-widest drop-shadow-2xl">
+                  <article className={`relative z-10 px-4 py-3 md:px-12 md:py-4 text-center rounded-full shadow-2xl ${item.className || ''}`}>
+                    <h2 className="text-2xl md:text-2xl font-black uppercase tracking-widest drop-shadow-2xl leading-none">
                       {item.name}
                     </h2>
                   </article>

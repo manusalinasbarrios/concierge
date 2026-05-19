@@ -8,11 +8,11 @@ const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
 
 export async function getCityName(cityId: string, lang: string): Promise<any | null> {
   const res = await fetch(`${STRAPI_URL}/api/cities/${cityId}?locale=${lang}&populate=citieHomePageImage`, {
-   // cache: 'no-store', // Ensures you always get the latest data from Strapi
+    cache: 'no-store', // Ensures you always get the latest data from Strapi
     headers: {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
     },
-    next: { revalidate: 3600 }, // Cache for 1 hour
+    //next: { revalidate: 3600 }, // Cache for 1 hour
   });
   if (!res.ok) return null;
 
@@ -56,7 +56,7 @@ export default async function OptionsPage({
         >
           {cityData?.title  || 'City Options'}
         </h1>
-        <p className="text-lg text-foreground/70 mt-2">
+        <p className="text-lg text-foreground/70 mt-2 text-justify">
           {cityData?.description || 'Explore the various options available for this city.'}
         </p>
       </div>
