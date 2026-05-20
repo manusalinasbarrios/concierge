@@ -10,6 +10,13 @@ export interface CityItem {
   name: string;
   description: string;
   className: string;
+  estadioName: string;
+  estadioDescription: string;
+  estadioLocation: string;
+  estadioImage: {
+    url: string;
+    alternativeText: string | null;
+  } | null;
   selectorImages: {
     url: string;
     alternativeText: string | null;
