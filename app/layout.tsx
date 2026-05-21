@@ -57,7 +57,7 @@ export default function RootLayout({
         </header>
         {children}
         
-        <footer className="w-full mt-auto pb-4 flex items-center justify-center gap-2">
+        <footer className="w-full mt-auto py-2 pb-4 flex items-center justify-center gap-2">
          
           <p className="text-sm text-white-800 ">
             &copy; {new Date().getFullYear()} Powered by 

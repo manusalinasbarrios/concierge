@@ -64,14 +64,14 @@ export default async function StrapiPage({
           />
         </div>
             <br />
-            <p className="text-2xl md:text-xl text-white-500 w-1/2 mx-auto"
+            <p className="text-2xl md:text-xl text-white-500 max-w mx-auto"
            
             >
 
               {"Welcome to a World Cup experience, inspired by the spirit of Mexico."}
             </p>
             <br />
-              <p className="text-2xl md:text-xl text-white-500 w-1/2 mx-auto"
+              <p className="text-2xl md:text-xl text-white-500 max-w mx-auto"
            
             >
 
@@ -81,10 +81,10 @@ export default async function StrapiPage({
         )}
 
          
-        <div className="flex justify-center py-12">
+        <div className="flex justify-center py-5">
           <Link
             href={`/cities?lang=en`}
-            className="bg-foreground bg-white text-green-800 rounded-tl-full rounded-br-full m-4 px-12 py-5 font-bold text-xl hover:scale-105 transition-all shadow-xl active:scale-95"
+            className="bg-foreground bg-white text-green-800 rounded-tl-full rounded-br-full m-4 px-8 py-5 font-bold text-xl hover:scale-105 transition-all shadow-xl active:scale-95"
             style={{
               textTransform: 'uppercase',
               //borderRadius: '0 50% 0 50%'
@@ -94,7 +94,7 @@ export default async function StrapiPage({
           </Link>
            <Link
             href={`/cities?lang=es`}
-            className="bg-foreground bg-red-600 text-white rounded-tl-full rounded-br-full text-background m-4 px-12 py-5 font-bold text-xl hover:scale-105 transition-all shadow-xl active:scale-95"
+            className="bg-foreground bg-red-600 text-white rounded-tl-full rounded-br-full text-background m-4 px-8 py-5 font-bold text-xl hover:scale-105 transition-all shadow-xl active:scale-95"
             style={{
               textTransform: 'uppercase',
               //borderRadius: '90% 0 90% 0'
