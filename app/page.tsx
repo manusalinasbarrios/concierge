@@ -64,14 +64,14 @@ export default async function StrapiPage({
           />
         </div>
             <br />
-            <p className="text-2xl md:text-xl text-white-500 max-w mx-auto"
+            <p className="text-2xl md:text-xl text-white-500 w-1/2 mx-auto"
            
             >
 
               {"Welcome to a World Cup experience, inspired by the spirit of Mexico."}
             </p>
             <br />
-              <p className="text-2xl md:text-xl text-white-500 max-w mx-auto"
+              <p className="text-2xl md:text-xl text-white-500 w-1/2 mx-auto"
            
             >
 

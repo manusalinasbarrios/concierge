@@ -57,11 +57,12 @@ export default function RootLayout({
         </header>
         {children}
         
-        <footer className="mt-auto pb-4 flex flex-col items-center justify-center">
+        <footer className="w-full mt-auto pb-4 flex items-center justify-center gap-2">
          
-          <p className="text-sm text-white-800 mt-4 grid grid-cols-2 gap-2 items-center justify-center flex">
-            &copy; {new Date().getFullYear()} Powered by <Image src={LogoFooter} alt="Concierge 24/7" width={20} height={20} unoptimized />
+          <p className="text-sm text-white-800 ">
+            &copy; {new Date().getFullYear()} Powered by 
           </p>
+          <Image src={LogoFooter} alt="Concierge 24/7" width={20} height={20} unoptimized />
         </footer>
 
         <React.Suspense fallback={null}>
