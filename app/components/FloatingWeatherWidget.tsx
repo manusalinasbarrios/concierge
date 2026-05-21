@@ -91,11 +91,7 @@ export default function FloatingWeatherWidget({ lang }: { lang: string }) {
                 <p className="text-xs font-semibold text-white-500  mb-2">
                 
                  
-                  {new Date(dayData.date).toLocaleString(lang, {
-                    weekday: 'short',
-                    day: 'numeric',
-                    timeZone: weather.location.tz_id,
-                  })}
+                  {dayData.date.slice(8, 10)}
                 </p>
                 <img
                   src={`https:${dayData.day.condition.icon}`}

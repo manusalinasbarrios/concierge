@@ -52,7 +52,11 @@ export async function getCityName(cityId: string) {
 
 export async function getWeatherData(cityName: string, lang: string) {
   const API_KEY = process.env.NEXT_PUBLIC_WEATHER_API_KEY; // Add this to your .env
-  const url = `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${cityName}&days=3&lang=${lang}`;
+  const days = 4; // Number of days for the forecast
+  const url = `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${cityName}&days=${days}&lang=${lang}`;
+//http://api.weatherapi.com/v1/forecast.json?key=57f9baddb7224cfea12140555262804&q=Mexico City&days=3&aqi=no&alerts=no
+
+
   console.log('Fetching weather data from:', url);
   const res = await fetch(url, { next: { revalidate: 900 } }); // Revalidate every 15 minutes
   if (!res.ok) return null;
