@@ -51,7 +51,7 @@ export default async function StrapiPage({
       <main className="flex flex-col items-center justify-center max-w-screen-lg mx-auto my-8 p-4 font-sans">
         {true && (
           <section className="text-center text-(#35633f) mb-16 py-8 border-foreground/5">
-            <h1 className={`${welcomeFont.className} text-8xl md:text-5xl font-extrabold text-foreground mb-4 uppercase text-white-800`}>
+            <h1 className={`${welcomeFont.className} text-5xl md:text-5xl font-extrabold text-foreground mb-4 uppercase text-white-800`}>
               {"Welcome"}
             </h1>
              <div className="flex justify-center py-12">
