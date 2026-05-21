@@ -14,5 +14,6 @@ export async function GET(request: Request) {
   if (!cityName) return NextResponse.json({ error: 'City not found' }, { status: 404 });
 
   const weather = await getWeatherData(cityName, lang);
+  console.log('Weather data for', cityName, ':', weather);
   return NextResponse.json(weather);
 }

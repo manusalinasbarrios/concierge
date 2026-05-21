@@ -9,7 +9,8 @@ interface Contact {
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
 
 export async function getQuickContacts(cityId: string) {
-  const url = `${STRAPI_URL}/api/contactos?populate=cities&filters[cities][documentId][$eq]=${cityId}`;
+  //const url = `${STRAPI_URL}/api/contactos?populate=cities&filters[cities][documentId][$eq]=${cityId}`;
+  const url = `${STRAPI_URL}/api/contactos`;
   const res = await fetch(url, {
     headers: {
       'Content-Type': 'application/json',

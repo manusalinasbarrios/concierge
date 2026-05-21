@@ -10,6 +10,7 @@ import ThemeSwitcher from "./components/ThemeSwitcher";
 import FloatingContactButton from "./components/FloatingContactButton";
 import FloatingWeatherWidget from "./components/FloatingWeatherWidget";
 import FloatingOpenTableButton from "./components/FloatingOpenTableButton";
+import LogoFooter from "../public/img/logo_footer.png";
 
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
@@ -46,7 +47,7 @@ export default function RootLayout({
 
   return (
     <html lang={lang} className={`${theme} ${mainFont.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col overflow-x-hidden">
         <header className="flex justify-between items-center border-b border-foreground/10 mb-10">
           <React.Suspense fallback={<div className="p-4">...</div>}>
             <CitySelector cities={cities} lang={lang} />
@@ -58,8 +59,8 @@ export default function RootLayout({
         
         <footer className="mt-auto pb-4 flex flex-col items-center justify-center">
          
-          <p className="text-sm text-white-800 mt-4">
-            &copy; {new Date().getFullYear()} Powered by 24/7.
+          <p className="text-sm text-white-800 mt-4 grid grid-cols-2 gap-2 items-center justify-center flex">
+            &copy; {new Date().getFullYear()} Powered by <Image src={LogoFooter} alt="Concierge 24/7" width={20} height={20} unoptimized />
           </p>
         </footer>
 

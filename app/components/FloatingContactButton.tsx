@@ -14,12 +14,12 @@ interface Contact {
 export default function FloatingContactButton({ lang }: { lang: string }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const cityId = searchParams.get('city');
+  const cityId = 'dummy';//searchParams.get('city');
   const [isOpen, setIsOpen] = useState(false);
   const [contacts, setContacts] = useState<Contact[]>([]);
 
   // Show on /options and all sub-routes
-  const isVisible = pathname?.startsWith('/cities/options');
+  const isVisible = pathname?.startsWith('/');
 
   useEffect(() => {
     if (isVisible && cityId) {
@@ -52,15 +52,9 @@ export default function FloatingContactButton({ lang }: { lang: string }) {
             {contacts.length > 0 ? (
               contacts.map(contact => (
                 <div key={contact.id} className="space-y-3">
-                  <p className="text-sm font-semibold text-gray-100">{contact.fullname}</p>
-                  <div className="grid grid-cols-2 gap-3">
-                    <a
-                      href={`tel:${contact.phone}`}
-                      className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold py-2.5 rounded-xl transition-all"
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.74 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                      {lang === 'en' ? 'Call' : 'Llamar'}
-                    </a>
+                  <p className="text-md font-semibold text-gray-100">{contact.fullname}</p>
+                  <div className="grid grid-cols-1 gap-3">
+                    
                     {contact.whatsappUrl && (
                       <a
                         href={contact.whatsappUrl}

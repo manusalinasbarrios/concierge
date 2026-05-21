@@ -120,24 +120,7 @@ function TourCard({
         )}
       </div>
 
-      {tour.images && tour.images.length > 1 && (
-        <div className="p-6 bg-foreground/[0.02] flex flex-wrap items-center gap-4 border-t border-foreground/5">
-          {tour.images.map((img, idx) => (
-            <button
-              key={idx}
-              onClick={() => setCurrentIndex(idx)}
-              className={`relative w-16 h-16 rounded-full overflow-hidden border-2 transition-all duration-300 hover:scale-110 ${idx === currentIndex ? 'border-blue-500 scale-110 shadow-lg' : 'border-transparent opacity-60 hover:opacity-100'}`}
-            >
-              <Image
-                src={getImageUrl(img.url)}
-                alt={img.alternativeText || `Tour Image ${idx + 1}`}
-                fill
-                className="object-cover"
-              />
-            </button>
-          ))}
-        </div>
-      )}
+      
     </article>
   );
 }

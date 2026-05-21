@@ -100,14 +100,14 @@ export default function RestaurantList({
                 if (locations.length === 0) return null;
 
                 return (
-                  <div className={locations.length > 1 ? "grid grid-cols-1 md:grid-cols-2 gap-4" : "w-full"}>
+                  <div className={locations.length > 1 ? "w-full items-center justify-center flex flex-col gap-2" : "w-full items-center justify-center flex"}>
                     {locations.map((loc, idx) => (
                       <a
                         key={idx}
                         href={loc.url!}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold transition-colors group rounded-full"
+                        className="flex items-center justify-center gap-1 w-50 px-6 py-1 bg-blue-600 hover:bg-blue-700 text-white font-bold transition-colors group rounded-full"
                       >
                         <div
                           className="w-5 h-5 group-hover:scale-110 transition-transform flex-shrink-0 bg-current"
@@ -119,7 +119,7 @@ export default function RestaurantList({
                           }}
                           aria-hidden="true"
                         />
-                        <span className="text-3xl" style={{ textTransform: 'uppercase' }}>
+                        <span className="text-2xl" style={{ textTransform: 'uppercase' }}>
                           {loc.label || defaultLabel}
                         </span>
                       </a>

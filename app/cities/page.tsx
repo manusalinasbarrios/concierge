@@ -60,9 +60,9 @@ export default async function StrapiPage({
   const items = await getStrapiContent(lang);
 
   return (
-    <div className="main-page-gradient w-full flex-1 flex flex-col">
+    <div className="main-page-gradient w-full p-4 md:p-8">
 
-      <main className="max-w-screen-xl mx-auto my-8 p-4 font-sans">
+      <main className="max-w-screen-xl mx-auto my-8 p-1 font-sans">
         <div className="flex flex-col gap-6">
           {items.map((item) => {
             const imageUrl = item.selectorImages?.[0]?.url;
@@ -77,7 +77,7 @@ export default async function StrapiPage({
                 className="block group"
               >
                 <div
-                  className="relative h-64 min-w-[400px] w-full rounded-2xl overflow-hidden shadow-xl transition-all duration-500 hover:scale-[1.01] flex items-end justify-center pb-2 md:pb-2"
+                  className="relative h-64 w-full rounded-2xl overflow-hidden shadow-xl transition-all duration-500 hover:scale-[1.01] flex items-end justify-center pb-2 md:pb-2"
                   style={{
                     backgroundImage: fullImageUrl ? `url(${fullImageUrl})` : 'none',
                     backgroundSize: 'cover',
