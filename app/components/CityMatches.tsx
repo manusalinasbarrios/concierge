@@ -9,6 +9,9 @@ interface Match {
   stadium: string;
   description: string;
   fase: string;
+  localScore?: number | null;
+  awayScore?: number | null;
+  status?: 'scheduled' | 'live' | 'finished';
 }
 
 export default function CityMatches({ matches, lang }: { matches: Match[], lang: string }) {
@@ -32,21 +35,38 @@ export default function CityMatches({ matches, lang }: { matches: Match[], lang:
                 {match.matchDay} {match.startHour ? `| ${match.startHour.substring(0, 5)}` : ''}
               </span>
               <span className="text-sm font-bold text-foreground uppercase tracking-widest">
-                {match.fase}
+                {match.status === 'live' ? (
+                  <span className="flex items-center gap-2 text-red-500">
+                    <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
+                    LIVE
+                  </span>
+                ) : (
+                  match.fase
+                )}
               </span>
             </div>
 
-            <div className="flex items-center justify-between gap-4 md:gap-12 relative z-10">
+            <div className="flex items-center justify-between gap-2 md:gap-12 relative z-10">
               <div className="flex-1 text-center">
                 <h3 className="text-xl md:text-3xl font-black uppercase tracking-widest text-foreground group-hover:text-blue-500 transition-colors break-words">
                   {match.localTeam}
                 </h3>
               </div>
 
-              <div className="flex flex-col items-center">
-                <div className="w-12 h-12 rounded-full bg-foreground/5 flex items-center justify-center border border-foreground/10 mb-1 group-hover:scale-110 transition-transform duration-500">
-                   <span className="text-xs font-black text-foreground/30 italic">VS</span>
+              <div className="flex items-center justify-center gap-4 bg-foreground/5 px-6 py-2 rounded-2xl border border-foreground/10">
+                <span className="text-3xl md:text-5xl font-black tabular-nums">
+                  {match.status !== 'scheduled' ? match.localScore ?? 0 : '-'}
+                </span>
+                
+                <div className="flex flex-col items-center">
+                  <div className="w-8 h-8 rounded-full bg-foreground/10 flex items-center justify-center mb-1 group-hover:scale-110 transition-transform duration-500">
+                     <span className="text-[10px] font-black text-foreground/50 italic">VS</span>
+                  </div>
                 </div>
+
+                <span className="text-3xl md:text-5xl font-black tabular-nums">
+                  {match.status !== 'scheduled' ? match.awayScore ?? 0 : '-'}
+                </span>
               </div>
 
               <div className="flex-1 text-center">

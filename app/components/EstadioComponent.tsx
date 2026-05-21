@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 interface EstadioProps {
@@ -8,26 +10,44 @@ interface EstadioProps {
   image: {
     url: string;
     alternativeText: string | null;
-  } | null;
+  }[] | null;
   strapiUrl: string;
   lang?: string;
 }
 
 export default function EstadioComponent({ name, description, location, image, strapiUrl, lang = 'en' }: EstadioProps) {
-  const imageUrl = image?.url ? (image.url.startsWith('http') ? image.url : `${strapiUrl}${image.url}`) : null;
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (!image || image.length <= 1) return;
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % image.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [image]);
+
+  const getImageUrl = (url?: string) => {
+    if (!url) return '';
+    return url.startsWith('http') ? url : `${strapiUrl}${url}`;
+  };
   
   return (
     <section className="my-10 bg-background/50 rounded-3xl overflow-hidden shadow-2xl border border-foreground/10 group animate-in fade-in slide-in-from-bottom-4 duration-700">
       <div className="flex flex-col md:flex-row">
         {/* Stadium Image */}
         <div className="relative w-full md:w-1/2 h-64 md:h-[450px] overflow-hidden">
-          {imageUrl ? (
-            <Image
-              src={imageUrl}
-              alt={image?.alternativeText || name}
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
-            />
+          {image && image.length > 0 ? (
+            image.map((img, idx) => (
+              <Image
+                key={idx}
+                src={getImageUrl(img.url)}
+                alt={img.alternativeText || name}
+                fill
+                className={`object-cover transition-opacity duration-1000 ease-in-out ${idx === currentIndex ? 'opacity-100' : 'opacity-0'} group-hover:scale-105 transition-transform duration-700`}
+              />
+            ))
           ) : (
             <div className="w-full h-full bg-muted flex items-center justify-center">
                <span className="text-muted-foreground">Stadium Image</span>
@@ -72,7 +92,7 @@ export default function EstadioComponent({ name, description, location, image, s
                     loading="lazy"
                     allowFullScreen
                     referrerPolicy="no-referrer-when-downgrade"
-                    
+
                     src={`https://maps.google.com/maps?q=${encodeURIComponent(location)}&z15&hl=${lang}&output=embed`}
                 ></iframe>
              </div>
