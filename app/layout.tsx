@@ -47,10 +47,10 @@ export default function RootLayout({
 
   return (
     <html lang={lang} className={`${theme} ${mainFont.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col overflow-x-hidden">
+      <body className="min-h-full w-full flex flex-col overflow-x-hidden">
         <header className="flex justify-between items-center border-b border-foreground/10 mb-10">
           <React.Suspense fallback={<div className="p-4">...</div>}>
-            <CitySelector cities={cities} lang={lang} />
+           
           </React.Suspense>
 
           
