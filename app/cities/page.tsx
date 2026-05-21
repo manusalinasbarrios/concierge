@@ -62,7 +62,7 @@ export default async function StrapiPage({
   return (
     <div className="main-page-gradient w-full p-4 md:p-8">
 
-      <main className="max-w-screen-xl mx-auto my-8 p-1 font-sans">
+      <main className="max-w-screen-xl mx-auto my-2 p-1 font-sans">
         <div className="flex flex-col gap-6">
           {items.map((item) => {
             const imageUrl = item.selectorImages?.[0]?.url;
