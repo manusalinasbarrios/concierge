@@ -1,0 +1,100 @@
+[
+  {
+    "categoria": "Restaurantes",
+    "zona": "Condesa / Reforma / Polanco",
+    "lugares": [
+      { "nombre": "Castizo", "ubicacion": "https://maps.app.goo.gl/sv5VPMTyf7pd7nw4A?g_st=iw" },
+      { "nombre": "Esquina del chilaquil", "ubicacion": "https://maps.app.goo.gl/gPsTZmCqf14qR3FX6?g_st=iw" },
+      { "nombre": "La Buena Birria Mx", "ubicacion": "https://maps.app.goo.gl/Z5CdYKgNJYNZvXxt9?g_st=iw" },
+      { "nombre": "Taco naco Condesa", "ubicacion": "https://maps.app.goo.gl/ZkCJaQ5KeJMgK7XT8?g_st=iw" },
+      { "nombre": "La casa del Pastor", "ubicacion": "https://maps.app.goo.gl/jgEXKZSxTr2CKFJt8?g_st=iw" },
+      { "nombre": "Tacos la chula", "ubicacion": "https://maps.app.goo.gl/RhS9SzTaCWxva16k9?g_st=iw" },
+      { "nombre": "Tacos atarantados", "ubicacion": "https://maps.app.goo.gl/L327YBXQsRbfAveH7?g_st=iw" },
+      { "nombre": "Balboa", "ubicacion": "https://maps.app.goo.gl/27cJrgP9MvbVUBRo9?g_st=iw" },
+      { "nombre": "Tacos Gabriel", "ubicacion": "https://maps.app.goo.gl/BjCGsk6W1UAxANLr6?g_st=iw" },
+      { "nombre": "Freims", "ubicacion": "https://maps.app.goo.gl/nNwyvYtrGGt3mUiQ6?g_st=iw" },
+      { "nombre": "Cantina Salon Ríos", "ubicacion": "https://maps.app.goo.gl/2nSDb5EHVvn98sVf7?g_st=iw" },
+      { "nombre": "Cityzen", "ubicacion": "https://maps.app.goo.gl/FeomdRq34nj2GBQ88?g_st=iw" },
+      { "nombre": "Prosecco", "ubicacion": "https://maps.app.goo.gl/MWSwQMtZXM74rYvQ8?g_st=iw" }
+    ]
+  },
+  {
+    "categoria": "Cafeterías",
+    "zona": "Condesa / Reforma / Polanco",
+    "lugares": [
+      { "nombre": "La churreria el moro", "ubicacion": "https://maps.app.goo.gl/wuYTTqRn4K6Y8C4Q6?g_st=iw" },
+      { "nombre": "Café Toscano", "ubicacion": "https://maps.app.goo.gl/yvpRqYJn5DWez6zZ7?g_st=iw" },
+      { "nombre": "Freims", "ubicacion": "https://maps.app.goo.gl/9DwuZbk7ufDaRswJ9?g_st=iw" },
+      { "nombre": "Niddo Cáfe", "ubicacion": "https://maps.app.goo.gl/UJrX2bTZ6QxavxA86?g_st=iw" },
+      { "nombre": "Café libertad", "ubicacion": "https://maps.app.goo.gl/kL3UsjTMMuhcdqyy8?g_st=iw" },
+      { "nombre": "Quiasmo coffe Bar", "ubicacion": "https://maps.app.goo.gl/MdCELAbqg5LEiD8F8?g_st=iw" },
+      { "nombre": "El Ocho", "ubicacion": "https://maps.app.goo.gl/rHP4MFWazh1tRoNL6?g_st=iw" },
+      { "nombre": "Frutos Prohibidos", "ubicacion": "https://maps.app.goo.gl/3iCm2M8e5SqECMrZ8?g_st=iw" },
+      { "nombre": "Maison Kayser Reforma 222", "ubicacion": "https://maps.app.goo.gl/7sBa5LMKG3kpAFwW9?g_st=iw" },
+      { "nombre": "Starbucks Reforma 222", "ubicacion": "https://maps.app.goo.gl/kuTcijAKSuDDg7Do8?g_st=iw" }
+    ]
+  },
+  {
+    "categoria": "Farmacias y hospitales",
+    "zona": "Condesa / Reforma / Polanco",
+    "lugares": [
+      { "nombre": "Farmacia del Ahorro", "ubicacion": "https://maps.app.goo.gl/R2eyPHRHgjdVEGE26?g_st=iw" },
+      { "nombre": "Farmacia Yza Culicana", "ubicacion": "https://maps.app.goo.gl/xtKbHFTrB6GYGJYF9?g_st=iw" },
+      { "nombre": "Farmacias guadalajara", "ubicacion": "https://maps.app.goo.gl/ZuAU4b7rR1QogvZs5?g_st=iw" },
+      { "nombre": "Farmacias Similares", "ubicacion": "https://maps.app.goo.gl/9D6JSzj1MG6UnoLV9?g_st=iw" },
+      { "nombre": "Farmacias San Pablo", "ubicacion": "https://maps.app.goo.gl/c569qdhoBDBKsJ617?g_st=iw" },
+      { "nombre": "Centro Medico Dalinde", "ubicacion": "https://maps.app.goo.gl/cP8CQZUxdCypTZX78?g_st=iw" },
+      { "nombre": "Hospital Trinidad", "ubicacion": "https://maps.app.goo.gl/tgkgY4bwkPn6Qtzd6?g_st=iw" },
+      { "nombre": "TuDOC Condesa", "ubicacion": "https://maps.app.goo.gl/yFZPq5d49ieMByko7?g_st=iw" },
+      { "nombre": "Grand Hospital Roma", "ubicacion": "https://maps.app.goo.gl/P7suaHhpbqQ3ktAw5?g_st=iw" },
+      { "nombre": "Hospital Azura Roma Condesa", "ubicacion": "https://maps.app.goo.gl/Upcta7F9FB6xLTWe6?g_st=iw" },
+      { "nombre": "Hospital Angeles Santa Monica", "ubicacion": "https://maps.app.goo.gl/yixpTDLsazR5E938A?g_st=iw" },
+      { "nombre": "Hospital Español", "ubicacion": "https://maps.app.goo.gl/sj6y9EgDb6vUoQHj9?g_st=iw" }
+    ]
+  },
+  {
+    "categoria": "Cafeterías/Restaurantes",
+    "zona": "Oficinas Torre Aleph",
+    "lugares": [
+      { "nombre": "Al Andalus", "ubicacion": "https://maps.app.goo.gl/jnQgysYBDoiTkNxX9?g_st=iw" },
+      { "nombre": "Gauchinho", "ubicacion": "https://maps.app.goo.gl/s9skmwsY3p6VS7Le8?g_st=iw" },
+      { "nombre": "Grill 28 Loreto", "ubicacion": "https://maps.app.goo.gl/9E4ei6hP5doG9sdt8?g_st=iw" },
+      { "nombre": "Raión", "ubicacion": "https://maps.app.goo.gl/JtJ4GjukMAeF84NC7?g_st=iw" },
+      { "nombre": "Oxa Cocina Unica", "ubicacion": "https://maps.app.goo.gl/8sm12NZ85Ha2CB396?g_st=iw" },
+      { "nombre": "7 osteria", "ubicacion": "https://maps.app.goo.gl/KtzKbtTqNi7Hv5fM6?g_st=iw" },
+      { "nombre": "San Angel Inn", "ubicacion": "https://maps.app.goo.gl/G45nsH3hHdevD34g6?g_st=iw" },
+      { "nombre": "Farina", "ubicacion": "https://maps.app.goo.gl/cJdcmprJYzuF1Z9T9?g_st=iw" },
+      { "nombre": "La pasta fresca", "ubicacion": "https://maps.app.goo.gl/E8xuDhULSWYY1AhN8?g_st=iw" },
+      { "nombre": "Los Arcos", "ubicacion": "https://maps.app.goo.gl/yjbzbopCyNY5F3v37?g_st=iw" },
+      { "nombre": "Carl's Jr", "ubicacion": "https://maps.app.goo.gl/UQjr35SuWa1gFnJ26?g_st=iw" },
+      { "nombre": "La casa de toño", "ubicacion": "https://maps.app.goo.gl/oeeGnvh6ge6AYMev5?g_st=iw" },
+      { "nombre": "Mc Donalds", "ubicacion": "https://maps.app.goo.gl/7fzkA2nf92CZZc1P7?g_st=iw" }
+    ]
+  },
+  {
+    "categoria": "Cafeterías",
+    "zona": "Oficinas Torre Aleph",
+    "lugares": [
+      { "nombre": "Tierra Garat", "ubicacion": "https://maps.app.goo.gl/sbefoTFrpJEnEH6m9?g_st=iw" },
+      { "nombre": "Cafe reevolución", "ubicacion": "https://maps.app.goo.gl/emVBEA12aPfQN2nk6?g_st=iw" },
+      { "nombre": "City Café Loreto", "ubicacion": "https://maps.app.goo.gl/GyQ8RHFFuRAPVKER8?g_st=iw" },
+      { "nombre": "Starbucks coffe Revolución", "ubicacion": "https://maps.app.goo.gl/8uiZw6LEpNE8a1e37?g_st=iw" },
+      { "nombre": "Starbucks coffe Insurgentes", "ubicacion": "https://maps.app.goo.gl/hyruTBoAvtHsWKFD7?g_st=iw" },
+      { "nombre": "Cafe Punta el Cielo", "ubicacion": "https://maps.app.goo.gl/hnKgVt7bH9a53hKE6?g_st=iw" }
+    ]
+  },
+  {
+    "categoria": "Farmacias y hospitales",
+    "zona": "Oficinas Torre Aleph",
+    "lugares": [
+      { "nombre": "San Pablo Farmacia", "ubicacion": "https://maps.app.goo.gl/9hqy5bwZU6vVugRD9?g_st=iw" },
+      { "nombre": "Farmacity Copilco", "ubicacion": "https://maps.app.goo.gl/jW8cHNS9nWc4TM8L9?g_st=iw" },
+      { "nombre": "Farmacias del ahorro", "ubicacion": "https://maps.app.goo.gl/3tUKnKDnGep3Gcc18?g_st=iw" },
+      { "nombre": "Farmacias Similares", "ubicacion": "https://maps.app.goo.gl/xCNZEAhVH4cdrDt58?g_st=iw" },
+      { "nombre": "Hospital San Angel Inn Sur", "ubicacion": "https://maps.app.goo.gl/qDcSKC48B33TuBPv9?g_st=iw" },
+      { "nombre": "Clinica Medica Axxa", "ubicacion": "https://maps.app.goo.gl/EUUWk93sLiNPcXHfA?g_st=iw" },
+      { "nombre": "Hospital Mexicano de San Vicente Ac", "ubicacion": "https://maps.app.goo.gl/x1NBCHA2R5gKqB549?g_st=iw" },
+      { "nombre": "Hospital Los Cedros Urgencias", "ubicacion": "https://maps.app.goo.gl/sBZKJbiw26FmBxUu7?g_st=iw" }
+    ]
+  }
+]

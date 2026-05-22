@@ -5,6 +5,9 @@ import CityHeaderImage from '../../components/CityHeaderImage';
 import EstadioComponent from '../../components/EstadioComponent';
 import CityMatches from '../../components/CityMatches';
 import WeatherComponent from '../../components/WeatherComponent';
+import path from 'path';
+import fs from 'fs/promises';
+import LocalPlaces from '@/app/components/LocalPlaces';
 
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
@@ -46,6 +49,17 @@ export async function getMatches(cityId: string, lang: string): Promise<any[]> {
   return json.data;
 }
 
+async function getLocalPlaces() {
+  try {
+    const filePath = path.join(process.cwd(), 'public', 'lugares.json');
+    const fileContent = await fs.readFile(filePath, 'utf8');
+    return JSON.parse(fileContent);
+  } catch (error) {
+    console.error('Error reading lugares.json:', error);
+    return [];
+  }
+}
+
 export default async function OptionsPage({
   searchParams,
 }: {
@@ -61,6 +75,10 @@ export default async function OptionsPage({
   const cityData = city ? await getCityName(city, lang) : null;
   const headerImages = cityData?.citieHomePageImage || [];
   const matches = city ? await getMatches(city, lang) : [];
+
+  // Check if it's Mexico City to show local recommendations from JSON
+  const isMexicoCity = cityName.toLowerCase().includes('mexico') || cityName.toLowerCase().includes('méxico') || cityName.toLowerCase().includes('cdmx');
+  //const localPlaces = isMexicoCity ? await getLocalPlaces() : [];
 
   const weather = cityData?.cityNameForWeather ? await getWeatherData(cityData.cityNameForWeather, lang) : null;
 
@@ -131,8 +149,35 @@ export default async function OptionsPage({
               }} >{option.label}</span>
             </Link>
           </li>
+          
+         
         ))}
+        {isMexicoCity && (
+            <li className="mb-4">
+              <Link
+                href={`/cities/options/localPlaces?lang=${lang}${city ? `&city=${city}` : ''}${cityName ? `&cityName=${cityName}` : ''}`}
+                className="flex items-center gap-4 p-4 px-15 border border-gray-200 rounded-full text-foreground transition-colors duration-200 ease-in-out text-lg group"
+              >
+                <div
+                  className="w-8 h-8 group-hover:scale-110 transition-transform flex-shrink-0 bg-current"
+                  style={{
+                    maskImage: `url(/img/local.svg)`,
+                    maskRepeat: 'no-repeat',
+                    maskSize: 'contain',
+                    maskPosition: 'center',
+                    color: 'currentColor',
+                  }}
+                  aria-hidden="true"
+                />
+                <span className='text-2xl' style={{
+                  textTransform: 'uppercase',
+                }} >{lang === 'en' ? 'Adidas Zone' : 'Zona Adidas'}</span>
+              </Link>
+             </li>
+        )}
       </ul>
+
+       
     </main>
   );
 }
