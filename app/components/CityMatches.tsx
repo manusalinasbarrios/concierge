@@ -55,7 +55,7 @@ export default function CityMatches({ matches, lang }: { matches: Match[], lang:
 
               <div className="flex items-center justify-center gap-4 bg-foreground/5 px-6 py-2 rounded-2xl border border-foreground/10">
                 <span className="text-xl md:text-2xl font-black tabular-nums">
-                  {match.status !== 'scheduled' ? match.localScore ?? 0 : '-'}
+                  {match.status !== 'scheduled' ? match.localScore ?? '-' : '-'}
                 </span>
                 
                 <div className="flex flex-col items-center">
@@ -65,7 +65,7 @@ export default function CityMatches({ matches, lang }: { matches: Match[], lang:
                 </div>
 
                 <span className="text-xl md:text-2xl font-black tabular-nums">
-                  {match.status !== 'scheduled' ? match.awayScore ?? 0 : '-'}
+                  {match.status !== 'scheduled' ? match.awayScore ?? '-' : '-'}
                 </span>
               </div>
 
