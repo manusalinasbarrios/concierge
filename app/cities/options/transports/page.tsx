@@ -145,7 +145,19 @@ export default async function TransportPage({
           {contacts.length > 0 ? (
             contacts.map((contact) => (
               <div key={contact.id} className="p-4 border border-gray-200 rounded-lg flex items-center justify-between group hover:border-blue-500 transition-colors">
-                <h2 className="text-2xl font-semibold mb-2">{contact.fullname}</h2>
+                <div className="flex items-center gap-4">
+                  <div
+                    className="w-8 h-8 flex-shrink-0 bg-current"
+                    style={{
+                      maskImage: `url(/img/contact.svg)`,
+                      maskRepeat: 'no-repeat',
+                      maskSize: 'contain',
+                      maskPosition: 'center',
+                    }}
+                    aria-hidden="true"
+                  />
+                  <span className="text-xl font-semibold">{contact.fullname}</span>
+                </div>
                
                
                   
