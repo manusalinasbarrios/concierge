@@ -28,7 +28,7 @@ export default function CitySelector({ cities = [], lang }: { cities: City[], la
 
 
             {cityName && (
-              <h1 className="text-xl font-bold uppercase tracking-tight text-foreground truncate">
+              <h1 className="text-2xl font-bold uppercase tracking-tight text-foreground truncate">
                 {cityName}
               </h1>
             )}

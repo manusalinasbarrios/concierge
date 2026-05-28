@@ -10,18 +10,27 @@ interface Transport {
   category: string;
 }
 
+interface Contact {
+  id: number;
+  documentId: string;
+  fullname: string;
+  email: string;
+  phone: string;
+  whatsappUrl: string;
+}
+
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
 
 async function getTransport(cityId: string, lang: string) {
   // Using the API structure and filters provided in your request
   const url = `${STRAPI_URL}/api/transportes?filters[cities][documentId][$eq]=${cityId}`;
   const res = await fetch(url, {
-    //cache: 'no-store',
+    cache: 'no-store',
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
     },
-    next: { revalidate: 3600 }, // Cache for 1 hour
+   // next: { revalidate: 3600 }, // Cache for 1 hour
   });
 
   if (!res.ok) {
@@ -30,6 +39,24 @@ async function getTransport(cityId: string, lang: string) {
 
   const json = await res.json();
   return json.data as Transport[];
+}
+
+async function getContacts(cityId: string) {
+  const url = `${STRAPI_URL}/api/contactos`;
+  const res = await fetch(url, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
+    },
+    next: { revalidate: 3600 }, // Cache for 1 hour
+  });
+
+  if (!res.ok) {
+    return [];
+  }
+
+  const json = await res.json();
+  return json.data as Contact[];
 }
 
 // Mapping categories to SVG icons (assuming they are in your public folder like in options/page.tsx)
@@ -61,6 +88,7 @@ export default async function TransportPage({
   }
 
   const transportOptions = await getTransport(cityId, lang);
+  const contacts = await getContacts(cityId);
 
   return (
     <main className="max-w-screen-lg mx-auto my-8 p-4">
@@ -96,7 +124,7 @@ export default async function TransportPage({
                     href={item.platfomUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors text-sm font-medium"
+                    className="px-5 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors text-sm font-medium gap-2 inline-flex items-center"
                   >
                     {lang === 'en' ? 'Open App' : 'Abrir App'}
                   </a>
@@ -109,6 +137,38 @@ export default async function TransportPage({
             {lang === 'en' ? 'No transport options found.' : 'No se encontraron opciones de transporte.'}
           </p>
         )}
+      </div>
+
+      <div className="mt-5 py-6">
+
+        <div className="grid gap-4">
+          {contacts.length > 0 ? (
+            contacts.map((contact) => (
+              <div key={contact.id} className="p-4 border border-gray-200 rounded-lg flex items-center justify-between group hover:border-blue-500 transition-colors">
+                <h2 className="text-2xl font-semibold mb-2">{contact.fullname}</h2>
+               
+               
+                  
+
+                  {contact.whatsappUrl && (
+                    <a
+                      href={contact.whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-5 py-2 bg-[#25D366] text-white rounded-full hover:bg-[#128C7E] transition-colors text-sm font-medium gap-2 inline-flex items-cente"
+                    >
+                      WhatsApp
+                    </a>
+                  )}
+                
+              </div>
+            ))
+          ) : (
+            <p className="text-gray-400 italic text-center py-12 border border-dashed border-gray-800 rounded-lg">
+              No contacts found for this city.
+            </p>
+          )}
+        </div>
       </div>
     </main>
   );

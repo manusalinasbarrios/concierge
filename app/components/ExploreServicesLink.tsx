@@ -11,7 +11,7 @@ interface ExploreServicesLinkProps {
 export default function ExploreServicesLink({ lang, cityId, dict, cityName }: ExploreServicesLinkProps) {
   return (
     <Link href={`/cities/options?lang=${lang}&city=${cityId}&cityName=${cityName}`} 
-    className="text-2xl text-blue-500 hover:underline"
+    className="text-xl text-blue-500 hover:underline"
     style={{
       textTransform: 'uppercase',
     }}
