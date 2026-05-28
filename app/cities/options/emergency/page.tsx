@@ -13,8 +13,10 @@ interface Emergency {
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
 
-async function getEmergencies(cityId: string) {
-  const url = `${STRAPI_URL}/api/emergencias?filters[city][documentId][$eq]=${cityId}`;
+
+
+async function getEmergencies(cityId: string, lang: string) {
+  const url = `${STRAPI_URL}/api/emergencias?locale=${lang}`;
   
   const res = await fetch(url, {
     //cache: 'no-store',
@@ -53,7 +55,7 @@ export default async function EmergenciesPage({
     );
   }
 
-  const emergencies = await getEmergencies(cityId);
+  const emergencies = await getEmergencies(cityId, lang);
 
   return (
     <main className="max-w-screen-lg mx-auto my-8 p-4">
@@ -72,7 +74,7 @@ export default async function EmergenciesPage({
                 {emergency.description && (
                   <p className="text-gray-300 mb-2 leading-relaxed">{emergency.description}</p>
                 )}
-                <p className="text-red-400 font-mono text-lg">{emergency.phone}</p>
+                <p className="text-red-400 font-mono text-lg">+{emergency.phone}</p>
               </div>
               <a
                 href={`tel:${emergency.phone}`}
