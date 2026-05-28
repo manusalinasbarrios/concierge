@@ -77,7 +77,7 @@ export default async function EmergenciesPage({
                 <p className="text-red-400 font-mono text-lg">+{emergency.phone}</p>
               </div>
               <a
-                href={`tel:${emergency.phone}`}
+                href={`tel:+${emergency.phone}`}
                 className="inline-block text-center px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition-colors shadow-lg shadow-red-900/20"
               >
                 {lang === 'en' ? 'Call Now' : 'Llamar Ahora'}
