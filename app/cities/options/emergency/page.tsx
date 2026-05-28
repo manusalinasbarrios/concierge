@@ -19,12 +19,12 @@ async function getEmergencies(cityId: string, lang: string) {
   const url = `${STRAPI_URL}/api/emergencias?locale=${lang}`;
   
   const res = await fetch(url, {
-    //cache: 'no-store',
+    cache: 'no-store',
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
     },
-    next: { revalidate: 3600 }, // Cache for 1 hour
+    //next: { revalidate: 3600 }, // Cache for 1 hour
   });
 
   if (!res.ok) {
