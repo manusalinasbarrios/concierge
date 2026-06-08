@@ -46,33 +46,23 @@ export default function CityMatches({ matches, lang }: { matches: Match[], lang:
               </span>
             </div>
 
-            <div className="flex items-center justify-between gap-2 md:gap-12 relative z-10">
-              <div className="flex-1 text-center">
-                <h3 className="text-xl md:text-3xl font-black uppercase tracking-widest text-foreground group-hover:text-blue-500 transition-colors break-words">
+            <div className="flex items-center justify-between gap-4 relative z-10">
+              <div className="flex flex-col gap-4 flex-1">
+                <h3 className="text-xl md:text-3xl font-black uppercase tracking-widest text-foreground group-hover:text-blue-500 transition-colors break-words leading-none">
                   {match.localTeam}
                 </h3>
-              </div>
-
-              <div className="flex items-center justify-center gap-4 bg-foreground/5 px-6 py-2 rounded-2xl border border-foreground/10">
-                <span className="text-xl md:text-2xl font-black tabular-nums">
-                  {match.status !== 'scheduled' ? match.localScore ?? '-' : '-'}
-                </span>
-                
-                <div className="flex flex-col items-center">
-                  <div className="w-8 h-8 rounded-full bg-foreground/10 flex items-center justify-center mb-1 group-hover:scale-110 transition-transform duration-500">
-                     <span className="text-[10px] font-black text-foreground/50 italic">VS</span>
-                  </div>
-                </div>
-
-                <span className="text-xl md:text-2xl font-black tabular-nums">
-                  {match.status !== 'scheduled' ? match.awayScore ?? '-' : '-'}
-                </span>
-              </div>
-
-              <div className="flex-1 text-center">
-                <h3 className="text-xl md:text-3xl font-black uppercase tracking-widest text-foreground group-hover:text-blue-500 transition-colors break-words">
+                <h3 className="text-xl md:text-3xl font-black uppercase tracking-widest text-foreground group-hover:text-blue-500 transition-colors break-words leading-none">
                   {match.awayTeam}
                 </h3>
+              </div>
+
+              <div className="flex flex-col items-center justify-center gap-4 bg-foreground/5 px-6 py-4 rounded-2xl border border-foreground/10 min-w-[80px]">
+                <span className="text-2xl md:text-4xl font-black tabular-nums leading-none">
+                  {match.status !== 'scheduled' ? match.localScore ?? '-' : '-'}
+                </span>
+                <span className="text-2xl md:text-4xl font-black tabular-nums leading-none">
+                  {match.status !== 'scheduled' ? match.awayScore ?? '-' : '-'}
+                </span>
               </div>
             </div>
 

@@ -59,21 +59,7 @@ export default function EstadioComponent({ name, description, location, image, s
         {/* Stadium Details */}
         <div className="w-full md:w-1/2 p-8 flex flex-col justify-between bg-card/30 backdrop-blur-sm">
           <div>
-            <div className="flex items-center gap-2 mb-2">
-              <span className="flex items-center gap-1.5 px-3 py-1 bg-red-600 text-white text-sm font-bold uppercase tracking-widest rounded-full">
-                <div
-                className="w-4 h-4 group-hover:scale-110 transition-transform flex-shrink-0 bg-current"
-                style={{
-                  maskImage: `url('/img/users.svg')`,
-                  maskRepeat: 'no-repeat',
-                  maskSize: 'contain',
-                  maskPosition: 'center',
-                  color: 'currentColor',
-                }}
-                aria-hidden="true"
-              /> 87.523
-              </span>
-            </div>
+           
             <h2 className="text-4xl font-black uppercase mb-4 tracking-tighter text-foreground leading-none">
               {name}
             </h2>
